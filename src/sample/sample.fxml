@@ -19,7 +19,7 @@
       <Pane prefHeight="406.0" prefWidth="470.0">
          <children>
             <TextArea fx:id="textArea" layoutX="13.0" layoutY="21.0" prefHeight="200.0" prefWidth="443.0" promptText="Your text....." />
-            <TextArea fx:id="keyArea" layoutX="18.0" layoutY="314.0" prefHeight="42.0" prefWidth="435.0" promptText="Public Key text...." />
+            <TextArea fx:id="keyArea" layoutX="18.0" layoutY="314.0" prefHeight="42.0" prefWidth="435.0" promptText="Public Key text...." visible="false" />
             <CheckBox fx:id="enCheckBox" layoutX="198.0" layoutY="235.0" mnemonicParsing="false" onAction="#enCheckBoxClick" text="Encrypt" />
             <CheckBox fx:id="deCheckBox" layoutX="198.0" layoutY="265.0" mnemonicParsing="false" onAction="#deCheckBoxClick" text="Decrypt" />
             <Button fx:id="startButton" layoutX="210.0" layoutY="367.0" mnemonicParsing="false" onAction="#StartButtonClick" text="Start" />

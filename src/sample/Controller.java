@@ -30,12 +30,19 @@ public class Controller {
 
     @FXML
     void deCheckBoxClick(ActionEvent event) {
-
+        if(deCheckBox.isSelected()){
+            enCheckBox.setSelected(false);
+            keyArea.setVisible(true);
+        }
     }
 
     @FXML
     void enCheckBoxClick(ActionEvent event) {
-
+        if(enCheckBox.isSelected()){
+            deCheckBox.setSelected(false);
+            keyArea.setText(null);
+            keyArea.setVisible(false);
+        }
     }
 
 }
