@@ -27,12 +27,21 @@ public class Controller {
     @FXML
     private Button startButton;
 
+    private String keyPublic;
+    private boolean modeCR;
+
     @FXML
     void StartButtonClick(ActionEvent event) throws Exception {
         keyGen keyPairGenerator = new keyGen();
         keyPairGenerator.writeToFile(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
-        System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPublicKey().getEncoded()));
-        System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
+        keyPublic = Base64.getEncoder().encodeToString(keyPairGenerator.getPublicKey().getEncoded());
+        RSA rsa = new RSA();
+        String encryptedString = Base64.getEncoder().encodeToString(rsa.encrypt(textArea.getText(), keyPublic));
+        System.out.println(encryptedString);
+        FileCreater fl = new FileCreater();
+        fl.addToFile("C:\\Users\\ThinkPad\\Desktop","en.txt",encryptedString);
+        String decryptedString = rsa.decrypt(encryptedString, Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
+        System.out.println(decryptedString);
     }
 
     @FXML
@@ -40,6 +49,7 @@ public class Controller {
         if(deCheckBox.isSelected()){
             enCheckBox.setSelected(false);
             keyArea.setVisible(true);
+            modeCR = false;
         }
     }
 
@@ -49,6 +59,7 @@ public class Controller {
             deCheckBox.setSelected(false);
             keyArea.setText(null);
             keyArea.setVisible(false);
+            modeCR = true;
         }
     }
 
