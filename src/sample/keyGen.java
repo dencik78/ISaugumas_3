@@ -19,10 +19,14 @@ public class keyGen {
         this.publicKey = pair.getPublic();
     }
 
-    public void writeToFile( String key) throws Exception {
-        FileCreater fl = new FileCreater();
-        fl.creteFile("C:\\Users\\ThinkPad\\Desktop",key,"en.txt");
-
+    public void writeToFile( String key,boolean mode) throws Exception {
+        if(mode) {
+            FileCreater fl = new FileCreater();
+            fl.creteFile("C:\\Users\\ThinkPad\\Desktop", key, "en.txt");
+        }else{
+            FileCreater fl = new FileCreater();
+            fl.creteFile("C:\\Users\\ThinkPad\\Desktop", key, "de.txt");
+        }
     }
 
     public PrivateKey getPrivateKey() {
