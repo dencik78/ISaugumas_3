@@ -6,6 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+
 public class Controller {
 
     @FXML
@@ -24,8 +28,11 @@ public class Controller {
     private Button startButton;
 
     @FXML
-    void StartButtonClick(ActionEvent event) {
-
+    void StartButtonClick(ActionEvent event) throws Exception {
+        keyGen keyPairGenerator = new keyGen();
+        keyPairGenerator.writeToFile(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
+        System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPublicKey().getEncoded()));
+        System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
     }
 
     @FXML
